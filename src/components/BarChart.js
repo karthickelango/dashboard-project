@@ -7,10 +7,6 @@ import "chart.js/auto";
 import DataContext from "../context/DataContext";
 import Spinner from "../components/spinner";
 import { POPULATION_URI } from "../constant/apiurl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { Box, Grid, Typography } from "@mui/material";
 
 const BarChart = () => {
@@ -18,7 +14,6 @@ const BarChart = () => {
   const colors = tokens(theme.palette.mode);
   const [isLoading, setIsLoading] = useState(false);
   const [population, setPopulation] = useState([]);
-  const [filterdnation, setFilteredNation] = useState([]);
 
   // get population details
   const getPopulationApi = async () => {
@@ -43,6 +38,9 @@ const BarChart = () => {
       x: {
         ticks: {
           color: colors.greenAccent[100],
+          font: {
+            size: 12,
+          },
         },
         grid: {
           display: false,
@@ -59,6 +57,9 @@ const BarChart = () => {
       y: {
         ticks: {
           color: colors.gray[100],
+          font: {
+            size: 12,
+          },
         },
         grid: {
           display: false,

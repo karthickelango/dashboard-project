@@ -62,11 +62,20 @@ const CustomBarChart = () => {
     item.Nation.includes(nation)
   );
 
+  const mapNation = dummyData?.map((item) => item.Nation);
+  const uniqueNation = [...new Set(mapNation)];
+
+
+ console.log(uniqueNation)
+
   const options = {
     scales: {
       x: {
         ticks: {
           color: colors.greenAccent[100],
+          font: {
+            size: 12,
+          },
         },
         grid: {
           display: false,
@@ -83,6 +92,9 @@ const CustomBarChart = () => {
       y: {
         ticks: {
           color: colors.gray[100],
+          font: {
+            size: 12,
+          },
         },
         grid: {
           display: false,
