@@ -47,7 +47,7 @@ const Signup = () => {
   return (
     <>
       <div className="container mt-30 login-page">
-        <div style={{ maxWidth: "35%", margin: "0 auto", border: "none" }}>
+        <div className="register-page">
           <div className="row g-0">
             <h2 className="b-logo">Dashboard</h2>
             <div className="col-md-12 align-content-center">
