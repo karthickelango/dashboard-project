@@ -46,6 +46,12 @@ const Sidebar = () => {
       route: "/metamask",
       icon: <BarChartOutlinedIcon />,
     },
+    {
+      id: "chartview",
+      label: "Chart View",
+      route: "/chartview",
+      icon: <BarChartOutlinedIcon />,
+    },
   ];
 
   // side bar items

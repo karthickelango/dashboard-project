@@ -10,6 +10,7 @@ import './assets/style/style.scss'
 import MyAccount from "./pages/profileInfo/MyAccount";
 import CoinPage from "./pages/Coin";
 import MetaMaskView from "./pages/MetaMaskView";
+import ChartView from "./pages/barChartView"
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -36,6 +37,7 @@ function App() {
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/bitcoin" element={<CoinPage />} />
                         <Route path="/metamask" element={<MetaMaskView />} />
+                        <Route path="/chartview" element={<ChartView />} />
                         <Route path="/myaccount" element={<MyAccount />} />
                       </Routes>
                     </main>

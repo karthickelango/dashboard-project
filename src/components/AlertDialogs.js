@@ -14,6 +14,8 @@ const AlertDialog = ({ open, setOpen }) => {
   // browser error handler
   const handelErrorMessage = () => {
     // Detect browser
+    let browser = "";
+
     const userAgent = navigator.userAgent.toLowerCase();
     const unsupportedBrowserSafari =
       "Unfortunately, Safari does not support the MetaMask extension, so You must utilize Chrome, Edge, Firefox, Brave, or other Chromium-based browsers in order to use MetaMask.";
@@ -23,11 +25,17 @@ const AlertDialog = ({ open, setOpen }) => {
       "Are you attempting to connect to the MetaMask wallet? Please ensure that you have the MetaMask extension installed. If not, consider installing it and then try connecting again.";
     const unsupportedBrowserUnknown =
       "Unfortunately, your browser does not support the MetaMask extension, so You must utilize Chrome, Edge, Firefox, Brave, or other Chromium-based browsers in order to use MetaMask.";
-    if (userAgent.indexOf("safari") !== -1) {
+    const isMetaMaskEnabled = typeof window.ethereum !== "undefined";
+    if (userAgent.indexOf("firefox") !== -1 && !isMetaMaskEnabled) {
+      setMessage(MetaMaskNotEnabled);
+    } else if (userAgent.indexOf("chrome") !== -1 && !isMetaMaskEnabled) {
+      setMessage(MetaMaskNotEnabled);
+    } else if (userAgent.indexOf("safari") !== -1 && !isMetaMaskEnabled) {
       setMessage(unsupportedBrowserSafari);
+      browser = "Safari";
     } else if (
-      userAgent.indexOf("opera") !== -1 ||
-      userAgent.indexOf("opr") !== -1
+      userAgent.indexOf("opera") !== -1 && !isMetaMaskEnabled ||
+      userAgent.indexOf("opr") !== -1 && !isMetaMaskEnabled
     ) {
       setMessage(unsupportedBrowserUnknown);
     } else {
@@ -37,14 +45,10 @@ const AlertDialog = ({ open, setOpen }) => {
     // Detect device
     const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
     const isTablet = /iPad/i.test(userAgent);
-    if (isMobile) {
+    if (isMobile && !isMetaMaskEnabled) {
       setMessage(mobileDevice);
-    } else if (isTablet) {
+    } else if (isTablet && !isMetaMaskEnabled) {
       setMessage(mobileDevice);
-    }
-    const isMetaMaskEnabled = typeof window.ethereum !== "undefined";
-    if (!isMetaMaskEnabled) {
-      setMessage(MetaMaskNotEnabled);
     }
   };
 
@@ -84,7 +88,7 @@ const AlertDialog = ({ open, setOpen }) => {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg profile-model">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:w-full sm:max-w-lg profile-model mobile-model">
                   <div className="bg-white">
                     <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                       <div className="sm:flex sm:items-start">
