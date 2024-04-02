@@ -19,7 +19,11 @@ import DataContext from "../../context/DataContext";
 import UserMenu from "./UserMenu";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
-import { NotificationAddOutlined, Settings, SupportOutlined } from "@mui/icons-material";
+import CurrencyBitcoinIcon from '@mui/icons-material/CurrencyBitcoin';
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
 const Sidebar = () => {
   const { theme } = useContext(DataContext);
@@ -38,13 +42,13 @@ const Sidebar = () => {
       id: "coin",
       label: "BitCoin",
       route: "/bitcoin",
-      icon: <PeopleOutlinedIcon />,
+      icon: <CurrencyBitcoinIcon />,
     },
     {
       id: "metemask",
       label: "MetaMask",
       route: "/metamask",
-      icon: <BarChartOutlinedIcon />,
+      icon: <AccountBalanceWalletOutlinedIcon />,
     },
     {
       id: "chartview",
@@ -59,17 +63,17 @@ const Sidebar = () => {
     {
       id: "notification",
       label: "Notification",
-      icon: <NotificationAddOutlined />,
+      icon: <NotificationsOutlinedIcon />,
     },
     {
       id: "support",
       label: "Support",
-      icon: <SupportOutlined />,
+      icon: <HelpOutlineOutlinedIcon />,
     },
     {
       id: "settings",
       label: "Settings",
-      icon: <Settings />,
+      icon: <SettingsOutlinedIcon />,
     },
   ];
 

@@ -60,7 +60,7 @@ const CustomBarChart = () => {
   const handleChange = (event) => {
     setNation(event.target.value);
   };
-  
+
   // filter nation based on dropdown select
   const filterBynation = dummyData?.filter((item) =>
     item.Nation.includes(nation)
@@ -157,7 +157,7 @@ const CustomBarChart = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  Population Overview(Select by country )
+                  Select by country
                 </Typography>
                 {/* select input */}
                 <FormControl
