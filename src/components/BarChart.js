@@ -141,6 +141,7 @@ const BarChart = () => {
                   color={colors.gray[100]}
                   variant="h5"
                   fontWeight="600"
+                  className="text-truncate w-50"
                 >
                   Population Overview
                 </Typography>
