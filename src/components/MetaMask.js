@@ -20,7 +20,7 @@ const MetaMask = () => {
         });
         setMetaMaskWalletAddress(accounts);
       } catch (error) {
-        console.log(error);
+        // error
       }
     } else {
         setOpen(true)
@@ -38,7 +38,7 @@ const MetaMask = () => {
           setMetaMaskWalletAddress(accounts);
         }
       } catch (error) {
-        console.log(error);
+        // error
       }
     }
   };
