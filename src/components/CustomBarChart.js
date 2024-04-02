@@ -66,8 +66,6 @@ const CustomBarChart = () => {
   const uniqueNation = [...new Set(mapNation)];
 
 
- console.log(uniqueNation)
-
   const options = {
     scales: {
       x: {
@@ -89,9 +87,10 @@ const CustomBarChart = () => {
           color: colors.greenAccent[400],
         },
       },
-      y: {
+      y: { 
         ticks: {
           color: colors.gray[100],
+          fontFamily: 'Roboto", sans-serif',
           font: {
             size: 12,
           },
@@ -137,7 +136,7 @@ const CustomBarChart = () => {
                     ? `1px solid ${colors.primary[900]}`
                     : "",
                 borderRadius: "5px",
-                position: 'relative'
+                position: "relative",
               }}
             >
               <Box
@@ -153,10 +152,14 @@ const CustomBarChart = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                Population Overview(Select by country )
+                  Population Overview(Select by country )
                 </Typography>
                 {/* select input */}
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small" className="bar-chart-dropdown">
+                <FormControl
+                  sx={{ m: 1, minWidth: 120 }}
+                  size="small"
+                  className="bar-chart-dropdown"
+                >
                   <InputLabel id="demo-select-small-label">
                     Select Nation
                   </InputLabel>
@@ -167,11 +170,9 @@ const CustomBarChart = () => {
                     label="Select Nation"
                     onChange={handleChange}
                   >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value="US">US</MenuItem>
-                    <MenuItem value="India">India</MenuItem>
+                    {uniqueNation.map((list) => (
+                      <MenuItem value={list}>{list}</MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </Box>

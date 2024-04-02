@@ -7,13 +7,22 @@ import "chart.js/auto";
 import DataContext from "../context/DataContext";
 import Spinner from "../components/spinner";
 import { POPULATION_URI } from "../constant/apiurl";
-import { Box, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from "@mui/material";
 
 const BarChart = () => {
   const { theme } = useContext(DataContext);
   const colors = tokens(theme.palette.mode);
   const [isLoading, setIsLoading] = useState(false);
   const [population, setPopulation] = useState([]);
+  const [nation, setNation] = useState("");
 
   // get population details
   const getPopulationApi = async () => {
@@ -33,6 +42,19 @@ const BarChart = () => {
   useEffect(() => {
     getPopulationApi();
   }, []);
+
+  const handleChange = (event) => {
+    setNation(event.target.value);
+  };
+
+  const filterBynation = population?.filter((item) =>
+    item.Nation.includes(nation)
+  );
+
+  const mapNation = population?.map((item) => item.Nation);
+  const uniqueNation = [...new Set(mapNation)];
+  console.log(uniqueNation);
+
   const options = {
     scales: {
       x: {
@@ -102,6 +124,7 @@ const BarChart = () => {
                     ? `1px solid ${colors.primary[900]}`
                     : "",
                 borderRadius: "5px",
+                position: "relative",
               }}
             >
               <Box
@@ -119,15 +142,36 @@ const BarChart = () => {
                 >
                   Population Overview
                 </Typography>
+                {/* select input */}
+                <FormControl
+                  sx={{ m: 1, minWidth: 120 }}
+                  size="small"
+                  className="bar-chart-dropdown"
+                >
+                  <InputLabel id="demo-select-small-label">
+                    Select Nation
+                  </InputLabel>
+                  <Select
+                    labelId="demo-select-small-label"
+                    id="demo-select-small"
+                    value={nation}
+                    label="Select Nation"
+                    onChange={handleChange}
+                  >
+                    {uniqueNation.map((list) => (
+                      <MenuItem value={list}>{list}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </Box>
               <Box p="10px" maxHeight="310px">
                 <Bar
                   data={{
-                    labels: population?.map((data) => data.Year),
+                    labels: filterBynation?.map((data) => data.Year),
                     datasets: [
                       {
                         label: "Population",
-                        data: population?.map((data) => data.Population),
+                        data: filterBynation?.map((data) => data.Population),
                         backgroundColor: ["#2ab42a", "#9fff9d", "#1b9a59"],
                         borderWidth: 0,
                       },
