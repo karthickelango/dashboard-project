@@ -28,14 +28,10 @@ const AlertDialog = ({ open, setOpen }) => {
     const isMetaMaskEnabled = typeof window.ethereum !== "undefined";
     if (userAgent.indexOf("firefox") !== -1 && !isMetaMaskEnabled) {
       setMessage(MetaMaskNotEnabled);
-      browser = "firefox";
-      console.log(browser);
     } else if (userAgent.indexOf("chrome") !== -1 && !isMetaMaskEnabled) {
       setMessage(MetaMaskNotEnabled);
     } else if (userAgent.indexOf("safari") !== -1 && !isMetaMaskEnabled) {
       setMessage(unsupportedBrowserSafari);
-      browser = "Safari";
-      console.log(browser);
     } else if (
       (userAgent.indexOf("opera") !== -1 && !isMetaMaskEnabled) ||
       (userAgent.indexOf("opr") !== -1 && !isMetaMaskEnabled)
