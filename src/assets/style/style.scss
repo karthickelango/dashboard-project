@@ -538,6 +538,11 @@ nav a.active.nav-item .nav-link {
     margin: 0 auto;
     border: none;
 }
+.sidebar-bottom-menu{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 @media only screen and (max-width: 768px) {
     .crypto-box {
         margin-bottom: 25px;
@@ -604,5 +609,8 @@ nav a.active.nav-item .nav-link {
     .register-page {
         max-width: none;
         width: 95%;
+    }
+    .sidebar-bottom-menu {
+        position: initial;
     }
 }

@@ -177,7 +177,7 @@ const Sidebar = () => {
               </NavLink>
             ))}
           </Box>
-          <Box sx={{position: 'absolute', bottom: 0, width: '100%'}}>
+          <Box className="sidebar-bottom-menu">
             {sidebarBottom.map((item, index) => (
               <Link
                 key={index}
