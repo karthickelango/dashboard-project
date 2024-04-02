@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { useTheme } from "@emotion/react";
 import { tokens } from "../theme";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import StatBox from "./StateBox";
 import DataContext from "../context/DataContext";
-
 
 const DummyData = () => {
   const { theme } = useContext(DataContext);
@@ -58,7 +57,15 @@ const DummyData = () => {
   return (
     <>
       {dummyItems.map((item, index) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={index} sx={{paddingTop: '0px !important', paddingBottom: '10px'}}>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          key={index}
+          sx={{ paddingBottom: "10px",  }}
+        >
           <Box
             className="shadow-sm"
             backgroundColor={colors.primary[400]}
@@ -66,9 +73,12 @@ const DummyData = () => {
             alignItems="center"
             justifyContent="center"
             sx={{
-              border: theme.palette.mode === 'dark' ? `1px solid ${colors.primary[900]}` : '',
+              border:
+                theme.palette.mode === "dark"
+                  ? `1px solid ${colors.primary[900]}`
+                  : "",
               borderRadius: "5px",
-              padding: "20px",
+              padding: "10px",
             }}
           >
             <StatBox

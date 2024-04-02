@@ -60,7 +60,7 @@ const MetaMask = () => {
   }, []);
 
   return (
-    <Grid item xs={12} sm={6} md={4} lg={3}>
+    <Grid item xs={12} sm={12} md={12} lg={12}>
       <Box
         className="shadow-sm"
         backgroundColor={colors.primary[400]}

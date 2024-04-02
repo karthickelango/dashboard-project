@@ -1,8 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-  Box,
-  Grid,
-  Typography} from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { tokens } from "../../theme";
 import BarChart from "../../components/BarChart";
 import DataContext from "../../context/DataContext";
@@ -10,6 +7,8 @@ import Coin from "../../components/BitCoin";
 import DummyData from "../../components/DummyData";
 import RecipeReviewCard from "../../components/NewsComponent";
 import MetaMask from "../../components/MetaMask";
+import LineChart from "../../components/LineChart";
+import CustomBarChart from "../../components/CustomBarChart";
 
 const Dashboard = () => {
   const { userDetail, theme } = useContext(DataContext);
@@ -21,7 +20,6 @@ const Dashboard = () => {
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
         sx={{ margin: "0px !important", width: "98% !important" }}
       >
         <Grid item xs={12} sm={12} md={12}>
@@ -41,75 +39,30 @@ const Dashboard = () => {
             </Typography>
           </Box>
         </Grid>
-      </Grid>
-
-      {/* bitcoin grid */}
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        sx={{ margin: "0px !important", width: "98% !important" }}
-      >
-        <Coin />
-      </Grid>
-      {/* data grid */}
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        sx={{ margin: "0px !important", width: "98% !important" }}
-      >
-        <Grid item xs={12} sm={12} md={6}>
-          <Box
-            className="shadow-sm"
-            backgroundColor={colors.primary[400]}
-            overflow="auto"
-            sx={{
-              border:
-                theme.palette.mode === "dark"
-                  ? `1px solid ${colors.primary[900]}`
-                  : "",
-              borderRadius: "5px",
-            }}
-          >
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              borderBottom={`1px solid ${colors.primary[900]}`}
-              colors={colors.gray[100]}
-              p="15px"
-            >
+        <Grid item xs={12} sm={12} md={9}>
+          <Grid container spacing={2}>
+            <Coin />
+            <BarChart />
+            <CustomBarChart />
+            <Grid item xs={12} sm={12} md={12}>
               <Typography
                 color={colors.gray[100]}
                 variant="h5"
                 fontWeight="600"
+                sx={{ margin: "0px" }}
               >
-                Population Overview
+                Dummy data
               </Typography>
-            </Box>
-            <Box p="10px" maxHeight='310px'>
-              <BarChart />
-            </Box>
-          </Box>
+            </Grid>
+            <DummyData />
+          </Grid>
         </Grid>
-        <MetaMask />
-        <RecipeReviewCard />
-      </Grid>
-      {/* dummy grid */}
-
-      <Typography
-        color={colors.gray[100]}
-        variant="h5"
-        fontWeight="600"
-        sx={{ margin: "25px" }}
-      >
-        Dummy data
-      </Typography>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        sx={{ margin: "0px !important", width: "98% !important" }}
-      >
-        <DummyData />
+        <Grid item xs={12} sm={12} md={3}>
+          <Grid container spacing={2}>
+            <MetaMask />
+            <RecipeReviewCard />
+          </Grid>
+        </Grid>
       </Grid>
     </>
   );

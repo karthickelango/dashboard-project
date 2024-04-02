@@ -59,7 +59,7 @@ const Coin = () => {
   return (
     <>
       {Object.entries(CryptoCurrencyPrice).map(([key, value], index) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+        <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
           <Box
             className="crypto-box shadow-sm"
             backgroundColor={colors.primary[400]}

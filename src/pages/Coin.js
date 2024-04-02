@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
 import { Box, Grid } from "@mui/material";
-import BarChart from "../components/BarChart";
 import Coin from "../components/BitCoin";
 
 const CoinPage = () => {

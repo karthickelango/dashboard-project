@@ -486,6 +486,11 @@ nav a.active.nav-item .nav-link {
         width: 180px;
     }
 }
+.bar-chart-dropdown {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+}
 @media only screen and (max-width: 768px) {
     .crypto-box  {
         margin-bottom: 25px;

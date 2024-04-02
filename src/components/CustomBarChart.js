@@ -1,43 +1,67 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTheme } from "@emotion/react";
 import { tokens } from "../theme";
-import { Bar, Line } from "react-chartjs-2";
-import axios from "axios";
+import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import DataContext from "../context/DataContext";
-import Spinner from "../components/spinner";
-import { POPULATION_URI } from "../constant/apiurl";
+import Spinner from "./spinner";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Box, Grid, Typography } from "@mui/material";
 
-const BarChart = () => {
+const CustomBarChart = () => {
   const { theme } = useContext(DataContext);
   const colors = tokens(theme.palette.mode);
   const [isLoading, setIsLoading] = useState(false);
-  const [population, setPopulation] = useState([]);
-  const [filterdnation, setFilteredNation] = useState([]);
+  const [nation, setNation] = useState("");
 
-  // get population details
-  const getPopulationApi = async () => {
-    try {
-      setIsLoading(true);
-      const response = await axios.get(POPULATION_URI);
-      if (response.status >= 200 && response.status <= 299) {
-        setPopulation(response.data.data);
-        setIsLoading(false);
-      }
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
+  const handleChange = (event) => {
+    setNation(event.target.value);
   };
+  const dummyData = [
+    {
+      Nation: "India",
+      Population: 143242325,
+      Year: 2020,
+    },
+    {
+      Nation: "India",
+      Population: 243242325,
+      Year: 2021,
+    },
+    {
+      Nation: "India",
+      Population: 345542325,
+      Year: 2022,
+    },
+    {
+      Nation: "India",
+      Population: 443242325,
+      Year: 2023,
+    },
+    {
+      Nation: "US",
+      Population: 14324232,
+      Year: 2020,
+    },
+    {
+      Nation: "US",
+      Population: 24324232,
+      Year: 2021,
+    },
+    {
+      Nation: "US",
+      Population: 34554232,
+      Year: 2022,
+    },
+  ];
 
-  useEffect(() => {
-    getPopulationApi();
-  }, []);
+  const filterBynation = dummyData?.filter((item) =>
+    item.Nation.includes(nation)
+  );
+
   const options = {
     scales: {
       x: {
@@ -101,6 +125,7 @@ const BarChart = () => {
                     ? `1px solid ${colors.primary[900]}`
                     : "",
                 borderRadius: "5px",
+                position: 'relative'
               }}
             >
               <Box
@@ -116,17 +141,37 @@ const BarChart = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  Population Overview
+                  Select by country Population Overview
                 </Typography>
+                {/* select input */}
+                <FormControl sx={{ m: 1, minWidth: 120 }} size="small" className="bar-chart-dropdown">
+                  <InputLabel id="demo-select-small-label">
+                    Select Nation
+                  </InputLabel>
+                  <Select
+                    labelId="demo-select-small-label"
+                    id="demo-select-small"
+                    value={nation}
+                    label="Select Nation"
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value="US">US</MenuItem>
+                    <MenuItem value="India">India</MenuItem>
+                  </Select>
+                </FormControl>
               </Box>
               <Box p="10px" maxHeight="310px">
+                {/* bar chart */}
                 <Bar
                   data={{
-                    labels: population?.map((data) => data.Year),
+                    labels: filterBynation?.map((data) => data.Year),
                     datasets: [
                       {
                         label: "Population",
-                        data: population?.map((data) => data.Population),
+                        data: filterBynation?.map((data) => data.Population),
                         backgroundColor: ["#2ab42a", "#9fff9d", "#1b9a59"],
                         borderWidth: 0,
                       },
@@ -143,4 +188,4 @@ const BarChart = () => {
   );
 };
 
-export default BarChart;
+export default CustomBarChart;
