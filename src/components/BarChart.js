@@ -43,14 +43,17 @@ const BarChart = () => {
     getPopulationApi();
   }, []);
 
+  // handel on select value
   const handleChange = (event) => {
     setNation(event.target.value);
   };
 
+  // filter nation based on dropdown select
   const filterBynation = population?.filter((item) =>
     item.Nation.includes(nation)
   );
 
+  // remove duplicate entries of nation
   const mapNation = population?.map((item) => item.Nation);
   const uniqueNation = [...new Set(mapNation)];
 
@@ -158,7 +161,9 @@ const BarChart = () => {
                     onChange={handleChange}
                   >
                     {uniqueNation.map((list, index) => (
-                      <MenuItem key={index} value={list}>{list}</MenuItem>
+                      <MenuItem key={index} value={list}>
+                        {list}
+                      </MenuItem>
                     ))}
                   </Select>
                 </FormControl>

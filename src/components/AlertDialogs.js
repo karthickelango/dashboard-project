@@ -6,16 +6,15 @@ import { ExpandCircleDown, QuestionMark } from "@mui/icons-material";
 const AlertDialog = ({ open, setOpen }) => {
   const cancelButtonRef = useRef(null);
   const [message, setMessage] = useState("");
+  
   //close model
   const handelClose = () => {
     setOpen(false);
   };
 
-  // browser error handler
+  // handel browser support errors 
   const handelErrorMessage = () => {
     // Detect browser
-    let browser = "";
-
     const userAgent = navigator.userAgent.toLowerCase();
     const unsupportedBrowserSafari =
       "Unfortunately, Safari does not support the MetaMask extension, so You must utilize Chrome, Edge, Firefox, Brave, or other Chromium-based browsers in order to use MetaMask.";

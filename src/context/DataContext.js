@@ -10,13 +10,6 @@ export const DataProvider = ({ children }) => {
   const userToken = localStorage.getItem('token')
   const token = userToken;
   const user = parseJwt(token)
-
-  function parseJwt(token) {
-    if (!token) { return; }
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace('-', '+').replace('_', '/');
-    return JSON.parse(window.atob(base64));
-  }
   const [activeUser, setActiveUser] = useState(user?.userId)
   const [userDetail, setUserDetail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -25,10 +18,13 @@ export const DataProvider = ({ children }) => {
   const [CryptoCurrency, setCryptoCurrency] = useState('')
   const theme = useTheme();
 
-  const processedData = allUser.map((item) => {
-    const id = item._id.toString();
-    return { ...item, id };
-  });
+  // parse JWT token
+  function parseJwt(token) {
+    if (!token) { return; }
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+  }
 
 
 
@@ -76,6 +72,7 @@ export const DataProvider = ({ children }) => {
       setIsLoading(false)
     }
   }
+
   useEffect(() => {
     getUserDetails()
     getAllUserDetails()
@@ -84,7 +81,7 @@ export const DataProvider = ({ children }) => {
 
 
   return (
-    <DataContext.Provider value={{ userDetail, getUserDetails, processedData, isLoading, setIsLoading, allUser, setAllUser, CryptoCurrencyPrice, theme }}>
+    <DataContext.Provider value={{ userDetail, getUserDetails, isLoading, setIsLoading, allUser, setAllUser, CryptoCurrencyPrice, theme }}>
       {children}
     </DataContext.Provider>
   )

@@ -17,9 +17,7 @@ const CustomBarChart = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [nation, setNation] = useState("");
 
-  const handleChange = (event) => {
-    setNation(event.target.value);
-  };
+  // dummy data
   const dummyData = [
     {
       Nation: "India",
@@ -58,10 +56,17 @@ const CustomBarChart = () => {
     },
   ];
 
+  // handel on select value
+  const handleChange = (event) => {
+    setNation(event.target.value);
+  };
+  
+  // filter nation based on dropdown select
   const filterBynation = dummyData?.filter((item) =>
     item.Nation.includes(nation)
   );
 
+  // remove duplicate entries of nation
   const mapNation = dummyData?.map((item) => item.Nation);
   const uniqueNation = [...new Set(mapNation)];
 
