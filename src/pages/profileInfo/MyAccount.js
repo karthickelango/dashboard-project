@@ -11,7 +11,7 @@ const MyAccount = () => {
     return (
         <div>
             <div className="min-h-screen flex flex-col justify-center items-center">
-                <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-sm" style={{ width: '500px' }}>
+                <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-sm profile-view">
                     <div className="mb-4 text-center position-relative">
                         <img
                             className="w-32 h-32 rounded-full mx-auto"

@@ -5,14 +5,55 @@ import { ExpandCircleDown, QuestionMark } from "@mui/icons-material";
 
 const AlertDialog = ({ open, setOpen }) => {
   const cancelButtonRef = useRef(null);
+  const [message, setMessage] = useState("");
+  //close model
   const handelClose = () => {
     setOpen(false);
   };
+
+  // browser error handler
+  const handelErrorMessage = () => {
+    // Detect browser
+    const userAgent = navigator.userAgent.toLowerCase();
+    const unsupportedBrowserSafari =
+      "Unfortunately, Safari does not support the MetaMask extension, so You must utilize Chrome, Edge, Firefox, Brave, or other Chromium-based browsers in order to use MetaMask.";
+    const mobileDevice =
+      "Are you attempting to connect to MetaMask from a mobile device? MetaMask offers a mobile application called 'MetaMask Mobile' that is accessible on both iOS and Android platforms. You can utilize this app for your needs.";
+    const MetaMaskNotEnabled =
+      "Are you attempting to connect to the MetaMask wallet? Please ensure that you have the MetaMask extension installed. If not, consider installing it and then try connecting again.";
+    const unsupportedBrowserUnknown =
+      "Unfortunately, your browser does not support the MetaMask extension, so You must utilize Chrome, Edge, Firefox, Brave, or other Chromium-based browsers in order to use MetaMask.";
+    if (userAgent.indexOf("safari") !== -1) {
+      setMessage(unsupportedBrowserSafari);
+    } else if (
+      userAgent.indexOf("opera") !== -1 ||
+      userAgent.indexOf("opr") !== -1
+    ) {
+      setMessage(unsupportedBrowserUnknown);
+    } else {
+      setMessage(unsupportedBrowserUnknown);
+    }
+
+    // Detect device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
+    const isTablet = /iPad/i.test(userAgent);
+    if (isMobile) {
+      setMessage(mobileDevice);
+    } else if (isTablet) {
+      setMessage(mobileDevice);
+    }
+    const isMetaMaskEnabled = typeof window.ethereum !== "undefined";
+    if (!isMetaMaskEnabled) {
+      setMessage(MetaMaskNotEnabled);
+    }
+  };
+
+  useEffect(() => {
+    handelErrorMessage();
+  }, []);
+
   return (
     <>
-      {/* <span className="camera-icon" onClick={() => setOpen(!open)}>
-        install Wallet
-      </span> */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
@@ -61,8 +102,7 @@ const AlertDialog = ({ open, setOpen }) => {
                             Attention
                           </Dialog.Title>
                           <div className="mt-2">
-                            <p className="text-sm text-gray-500">
-                            Hope you are trying to connect to the MetaMask wallet. Please ensure you have the MetaMask extension installed, or try installing it and then connect again.</p>
+                            <p className="text-sm text-gray-500">{message}</p>
                           </div>
                         </div>
                       </div>

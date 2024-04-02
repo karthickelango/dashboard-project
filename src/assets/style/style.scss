@@ -63,6 +63,7 @@
     background-color: #4cceac !important;
     padding: 3px 15px;
 }
+
 .custom-btn {
     color: #fff !important;
     padding: 3px 15px;
@@ -70,7 +71,8 @@
 }
 
 .primary-btn:hover,
-.secondary-btn:hover, .custom-btn:hover{
+.secondary-btn:hover,
+.custom-btn:hover {
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -85,10 +87,12 @@
     color: #4cceac;
     text-decoration: none;
 }
+
 .text-color-error {
     color: red;
     text-decoration: none;
 }
+
 .fill-blue-600 {
     fill: #4cceac;
 }
@@ -398,13 +402,13 @@ nav a.active.nav-item .nav-link {
     border-radius: 8px;
 
     &.light-mode {
-            background-color: #f1f3f5;
-            color: #000;
+        background-color: #f1f3f5;
+        color: #000;
     }
 
     &.dark-mode {
-            background-color: #202425;
-            border-radius: 5px;
+        background-color: #202425;
+        border-radius: 5px;
     }
 }
 
@@ -438,11 +442,13 @@ nav a.active.nav-item .nav-link {
     top: -25px;
     left: 40%;
 }
+
 .coin-percent {
     position: absolute;
     right: 15px;
     bottom: 10px;
 }
+
 .brand-logo {
     background: url('../images/brand-logo.png') no-repeat center;
     display: inline-block;
@@ -481,24 +487,42 @@ nav a.active.nav-item .nav-link {
         }
     }
 }
+
 .profile-menu {
     .MuiPaper-root {
         width: 180px;
     }
 }
+
 .bar-chart-dropdown {
     position: absolute !important;
     top: 0;
     right: 0;
 }
+
+.MuiCardMedia-root.card-img {
+    width: 185px;
+    margin: 0 auto;
+}
+
+.metamask-img {
+    width: 200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.profile-view {
+    width: 500px;
+}
 @media only screen and (max-width: 768px) {
-    .crypto-box  {
+    .crypto-box {
         margin-bottom: 25px;
     }
+
     .login-img {
         display: none;
     }
-    .pro-sidebar,   
+
+    .pro-sidebar,
     .side-bar {
         &.collapsed-mobile {
             width: 65px;
@@ -530,6 +554,7 @@ nav a.active.nav-item .nav-link {
                 left: 10px;
                 margin-left: 0px;
             }
+
             .pro-menu-item {
                 pointer-events: none;
             }
@@ -543,14 +568,12 @@ nav a.active.nav-item .nav-link {
     .mtm-6 {
         margin-top: 6px !important;
     }
-}
 
-.MuiCardMedia-root.card-img {
-    width: 185px;
-    margin: 0 auto;
-}
-.metamask-img {
-    width: 200px;
-    margin: 0 auto;
-    padding: 20px;
+    .mobile-model {
+        position: absolute;
+        top: 10%;
+    }
+    .profile-view {
+        width: auto;
+    }
 }

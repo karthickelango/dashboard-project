@@ -141,7 +141,7 @@ const CustomBarChart = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  Select by country Population Overview
+                Population Overview(Select by country )
                 </Typography>
                 {/* select input */}
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small" className="bar-chart-dropdown">

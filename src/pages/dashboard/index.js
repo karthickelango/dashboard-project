@@ -7,7 +7,6 @@ import Coin from "../../components/BitCoin";
 import DummyData from "../../components/DummyData";
 import RecipeReviewCard from "../../components/NewsComponent";
 import MetaMask from "../../components/MetaMask";
-import LineChart from "../../components/LineChart";
 import CustomBarChart from "../../components/CustomBarChart";
 
 const Dashboard = () => {
@@ -39,7 +38,7 @@ const Dashboard = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={9}>
+        <Grid item xs={12} sm={12} md={12} lg={9}>
           <Grid container spacing={2}>
             <Coin />
             <BarChart />
@@ -57,7 +56,7 @@ const Dashboard = () => {
             <DummyData />
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={3}>
+        <Grid item xs={12} sm={12} md={12} lg={3}>
           <Grid container spacing={2}>
             <MetaMask />
             <RecipeReviewCard />
