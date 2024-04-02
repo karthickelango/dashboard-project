@@ -32,7 +32,7 @@ const AlertDialog = ({ open, setOpen }) => {
       console.log(browser);
     } else if (userAgent.indexOf("chrome") !== -1 && !isMetaMaskEnabled) {
       setMessage(MetaMaskNotEnabled);
-    } else if (userAgent.indexOf("safari") !== -1) {
+    } else if (userAgent.indexOf("safari") !== -1 && !isMetaMaskEnabled) {
       setMessage(unsupportedBrowserSafari);
       browser = "Safari";
       console.log(browser);
