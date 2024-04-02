@@ -170,8 +170,8 @@ const CustomBarChart = () => {
                     label="Select Nation"
                     onChange={handleChange}
                   >
-                    {uniqueNation.map((list) => (
-                      <MenuItem value={list}>{list}</MenuItem>
+                    {uniqueNation.map((list, index) => (
+                      <MenuItem key={index} value={list}>{list}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>

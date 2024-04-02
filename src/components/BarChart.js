@@ -53,7 +53,6 @@ const BarChart = () => {
 
   const mapNation = population?.map((item) => item.Nation);
   const uniqueNation = [...new Set(mapNation)];
-  console.log(uniqueNation);
 
   const options = {
     scales: {
@@ -158,8 +157,8 @@ const BarChart = () => {
                     label="Select Nation"
                     onChange={handleChange}
                   >
-                    {uniqueNation.map((list) => (
-                      <MenuItem value={list}>{list}</MenuItem>
+                    {uniqueNation.map((list, index) => (
+                      <MenuItem key={index} value={list}>{list}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>
