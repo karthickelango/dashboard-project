@@ -9,6 +9,7 @@ import etherium from "../assets/images/etherium.svg";
 import graph1 from "../assets/images/graph-r.svg";
 import graph2 from "../assets/images/graph-b.svg";
 import graph3 from "../assets/images/graph-o.svg";
+
 const Coin = () => {
   const { CryptoCurrencyPrice, theme } = useContext(DataContext);
   const colors = tokens(theme.palette.mode);

@@ -5,8 +5,8 @@ import Coin from "../components/BitCoin";
 
 const CoinPage = () => {
   return (
-    <Box m="20px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Box>
+      <Box display="flex" justifyContent="space-between" alignItems="center"  m="20px">
         <Header title="Bit Coins" />
       </Box>
       <Grid

@@ -6,9 +6,9 @@ import CustomBarChart from "../components/CustomBarChart";
 
 const chartView = () => {
   return (
-    <Box m="20px">
+    <Box>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Bar chart" />
+        <Header title="Bar chart"  m="20px"/>
       </Box>
       <Grid
         container

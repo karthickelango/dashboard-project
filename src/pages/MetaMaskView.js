@@ -5,8 +5,8 @@ import MetaMask from "../components/MetaMask";
 
 const MetaMaskView = () => {
   return (
-    <Box m="20px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Box>
+      <Box display="flex" justifyContent="space-between" alignItems="center"  m="20px">
         <Header title="MetaMask" />
       </Box>
       <Grid
