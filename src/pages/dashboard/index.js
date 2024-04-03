@@ -40,8 +40,11 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={9}>
           <Grid container spacing={2}>
+            {/* cryptocoin */}
             <Coin />
+            {/* barchart */}
             <BarChart />
+            {/* custombarchart  */}
             <CustomBarChart />
             <Grid item xs={12} sm={12} md={12}>
               <Typography
@@ -53,12 +56,15 @@ const Dashboard = () => {
                 Dummy data
               </Typography>
             </Grid>
+            {/* dummy data  */}
             <DummyData />
           </Grid>
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={3}>
           <Grid container spacing={2}>
+            {/* Metamask  */}
             <MetaMask />
+            {/* news card  */}
             <RecipeReviewCard />
           </Grid>
         </Grid>
