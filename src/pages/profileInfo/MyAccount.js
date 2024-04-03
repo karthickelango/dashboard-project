@@ -40,11 +40,11 @@ const MyAccount = () => {
                         <h2 className="text-lg font-semibold mb-2">Contact</h2>
                         <p className="text-gray-600">
                             Email: {
-                                userDetail.email === null ? 'Add about' :
+                                userDetail.email === null ? 'Add Email' :
                                     <>{userDetail.email}</>
                             }<br />
                             Phone: {
-                                userDetail.contact === null ? 'Add about' :
+                                userDetail.contact === null ? 'Add mobile number' :
                                     <>{userDetail.contact}</>
                             }
                         </p>
