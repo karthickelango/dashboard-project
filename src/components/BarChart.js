@@ -74,7 +74,7 @@ const BarChart = () => {
         ticks: {
           color: colors.greenAccent[100],
           font: {
-            size: 10,
+            size: 11,
           },
         },
         grid: {
