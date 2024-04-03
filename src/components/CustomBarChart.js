@@ -189,7 +189,7 @@ const CustomBarChart = () => {
                     labels: filterBynation?.map((data) => data.Year),
                     datasets: [
                       {
-                        label: "Population",
+                        label: nation,
                         data: filterBynation?.map((data) => data.Population),
                         backgroundColor: ["#2ab42a", "#9fff9d", "#1b9a59"],
                         borderWidth: 0,
