@@ -57,6 +57,17 @@ const BarChart = () => {
   const mapNation = population?.map((item) => item.Nation);
   const uniqueNation = [...new Set(mapNation)];
 
+  // shorhand value
+  const getShortValue = (value) => {
+    if (value >= 1000000000) {
+      return (value / 1000000000).toFixed(1) + "B";
+    } else if (value >= 1000000) {
+      return (value / 1000000).toFixed(1) + "M";
+    } else {
+      return value;
+    }
+  };
+
   const options = {
     scales: {
       x: {
@@ -83,6 +94,9 @@ const BarChart = () => {
           color: colors.gray[100],
           font: {
             size: 12,
+          },
+          callback: function (value, index, values) {
+            return getShortValue(value);
           },
         },
         grid: {
@@ -175,7 +189,7 @@ const BarChart = () => {
                     labels: filterBynation?.map((data) => data.Year),
                     datasets: [
                       {
-                        label: nation,
+                        label: `Pouplation of ${nation}`,
                         data: filterBynation?.map((data) => data.Population),
                         backgroundColor: ["#2ab42a", "#9fff9d", "#1b9a59"],
                         borderWidth: 0,
