@@ -74,7 +74,7 @@ const BarChart = () => {
         ticks: {
           color: colors.greenAccent[100],
           font: {
-            size: 12,
+            size: 10,
           },
         },
         grid: {
@@ -189,7 +189,7 @@ const BarChart = () => {
                     labels: filterBynation?.map((data) => data.Year),
                     datasets: [
                       {
-                        label: `Pouplation of ${nation}`,
+                        label: `Pouplation in ${nation}`,
                         data: filterBynation?.map((data) => data.Population),
                         backgroundColor: ["#2ab42a", "#9fff9d", "#1b9a59"],
                         borderWidth: 0,
