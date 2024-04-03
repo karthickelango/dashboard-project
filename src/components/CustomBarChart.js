@@ -15,7 +15,7 @@ const CustomBarChart = () => {
   const { theme } = useContext(DataContext);
   const colors = tokens(theme.palette.mode);
   const [isLoading, setIsLoading] = useState(false);
-  const [nation, setNation] = useState("");
+  const [nation, setNation] = useState("India");
 
   // dummy data
   const dummyData = [

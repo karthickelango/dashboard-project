@@ -22,7 +22,7 @@ const BarChart = () => {
   const colors = tokens(theme.palette.mode);
   const [isLoading, setIsLoading] = useState(false);
   const [population, setPopulation] = useState([]);
-  const [nation, setNation] = useState("");
+  const [nation, setNation] = useState("United States");
 
   // get population details
   const getPopulationApi = async () => {
